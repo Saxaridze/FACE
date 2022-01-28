@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FACE"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800" Icon="beauty_logo.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Rectangle Grid.Row="0" Fill="{StaticResource ColorMain}"></Rectangle>
+            <Button x:Name="BtnBack" Click="BtnBack_Click"  HorizontalAlignment="Right" Width="100" Height="30" Background="#FFFF4A6D" Foreground="White">Назад</Button>
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ElementName=MainFrame, Path=Content.Title}"></TextBlock>
+
+            <StackPanel Orientation="Horizontal">
+                <Image Source="Resources/beauty_logo.png" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Left" Height="70"/>
+                <TextBlock VerticalAlignment="Center" Height="15"><Run Text="Мордочка" Foreground="#FFFF4A6D" FontWeight="Bold"/></TextBlock>
+            </StackPanel>
+        </Grid>
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered"></Frame>
+        <Rectangle Grid.Row="2" Fill="{StaticResource ColorMain}"></Rectangle>
+        <Label Grid.Row="2" Content="© 2022 Мордочка. Все права защищены. Все торговые марки являются собственностью соответствующих владельцев." VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFFF4A6D" />
     </Grid>
 </Window>
