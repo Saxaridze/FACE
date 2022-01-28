@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FACE.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace FACE
 {
     /// <summary>
@@ -23,6 +25,22 @@ namespace FACE
         public MainWindow()
         {
             InitializeComponent();
+            Manager.MainFraim = MainFrame;
+            MainFrame.Navigate(new PageMain1());
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+                MainFrame.GoBack();
+        }
+
+        private void MainFrame_ContentRendered(object sender, EventArgs e)
+        {
+            if (!MainFrame.CanGoBack)
+                BtnBack.Visibility = Visibility.Collapsed;
+            else
+                BtnBack.Visibility = Visibility.Visible;
         }
     }
 }
