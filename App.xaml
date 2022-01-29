@@ -11,7 +11,7 @@
             <Setter Property="Width" Value="200"/>
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="Margin" Value="20"/>
-            <Setter Property="Background" Value="{StaticResource ColorMain}"/>
+            <Setter Property="Background" Value="#FFFF4A6D"/>
         </Style>
         <Style TargetType="Control" x:Key="MainControl">
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
