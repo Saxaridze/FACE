@@ -8,34 +8,30 @@
         Title="MainWindow" Height="600" Width="800" Icon="beauty_logo.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Grid Grid.ColumnSpan="2">
             <Rectangle Grid.Row="0" Fill="{StaticResource ColorMain}"></Rectangle>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-40,0,0" FontWeight="Bold" Foreground="#FFFF4A6D" Text="{Binding ElementName=MainFrame, Path=Content.Title}" FontSize="30"></TextBlock>
-            <StackPanel Orientation="Horizontal" Margin="0,-60,0,0">
-                <Image Source="Resources/beauty_logo.png" Margin="10,70,10,44" VerticalAlignment="Center" HorizontalAlignment="Left" Height="100" Width="100"/>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Height="20" Foreground="#FFFF4A6D" FontWeight="Bold" Margin="0,0,0,-30"><Run Text="МОРДОЧКА"/></TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="0,0,554,1" >
+                <Image Source="Resources/beauty_logo.png" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Height="70" Width="70"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Height="20" Foreground="#FFFF4A6D" FontWeight="Bold" Margin="3" FontFamily="Tahoma"><Run Text="МОРДОЧКА"/></TextBlock>
             </StackPanel>
-            <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,10,0">
-                <TextBlock Foreground="#FFFF4A6D" FontWeight="Bold" Margin="0,10,0,10" HorizontalAlignment="Center">НАШИ КОНТАКТЫ</TextBlock>
-                <TextBlock Foreground="#FFFF4A6D" Margin="3"><Run Text="+7 (545) 658-42-83"/></TextBlock>
-                <TextBlock Foreground="#FFFF4A6D" Margin="3">hello@Mordohka.ru</TextBlock>
-                <TextBlock Foreground="#FFFF4A6D" Margin="3"><Run Text="г. Москва, ул. Марксистская 34, корпус 10"/></TextBlock>
+            <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,94,-1" Width="160">
+                <TextBlock Foreground="#FFFF4A6D" FontWeight="Bold" Margin="0,10,0,3" HorizontalAlignment="Center" FontFamily="Tahoma">НАШИ КОНТАКТЫ</TextBlock>
+                <TextBlock Foreground="#FFFF4A6D" Margin="3" FontFamily="Tahoma"><Run Text="+7 (545) 658-42-83"/></TextBlock>
+                <TextBlock Foreground="#FFFF4A6D" Margin="3" FontFamily="Tahoma">hello@Mordohka.ru</TextBlock>
             </StackPanel>
-            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,100,0,0" >
-                <TextBlock Margin="15" Foreground="#FFFF4A6D">ВОЗМОЖНОСТИ</TextBlock>
-                <TextBlock Margin="15" Foreground="#FFFF4A6D">ДЛЯ КОГО</TextBlock>
-                <TextBlock Margin="15" Foreground="#FFFF4A6D">ТАРИФЫ</TextBlock>
-                <TextBlock Margin="15" Foreground="#FFFF4A6D">ИНТЕГРАЦИИ</TextBlock>
-                <TextBlock Margin="15" Foreground="#FFFF4A6D">МАТЕРИАЛЫ</TextBlock>
-                <Button x:Name="BtnBack" Click="BtnBack_Click"  HorizontalAlignment="Right" Width="100" Height="30" Margin="190,10" Background="#FFFF4A6D" Foreground="Black" Content="Назад"/>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Width="94">
+                <Button x:Name="BtnBack" Click="BtnBack_Click" FontFamily="Tahoma" Width="80" Height="30" VerticalAlignment="Center" Margin="0" Background="#FFFF4A6D" Foreground="Black" Content="Назад"/>
             </StackPanel>
         </Grid>
-        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered" Grid.ColumnSpan="2"></Frame>
+        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" ContentRendered="MainFrame_ContentRendered" Grid.Column="2"></Frame>
         <Rectangle Grid.Row="2" Fill="{StaticResource ColorMain}" Grid.ColumnSpan="2"></Rectangle>
-        <Label Grid.Row="2" Content="© 2022 Мордочка. Все права защищены. Все торговые марки являются собственностью соответствующих владельцев." VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFFF4A6D" Grid.Column="1" Margin="29,12,62,12" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2">
+            <Label FontFamily="Tahoma" Content="© 2022 Мордочка. Все права защищены. Все торговые марки являются собственностью соответствующих владельцев." Foreground="#FFFF4A6D"></Label>
+        </StackPanel>
     </Grid>
 </Window>

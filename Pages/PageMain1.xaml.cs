@@ -25,15 +25,23 @@ namespace FACE.Pages
             InitializeComponent();
             Zadanie3Entities context = new Zadanie3Entities();
         }
-
-        private void BtnAdmin_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Данная функция находится в разработке");
-        }
-
         private void BtnVisior_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Данная функция находится в разработке");
+            string Email = "1";
+            string Password = "1";
+            if (TxtLogin.Text == Email && TxtPassword.Text == Password)
+                MessageBox.Show("Добро пожаловать, Администратор");
+            else
+                MessageBox.Show("Не получилось аутентифицировать пользователя. Введены некорректные e-mail или пароль");
+        }
+
+        private void BtnEntry_Click(object sender, RoutedEventArgs e)
+        {   
+        }
+
+        private void BtnRegistration_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
