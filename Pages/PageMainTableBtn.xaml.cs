@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FACE.Tables;
 
 namespace FACE.Pages
 {
@@ -37,7 +38,8 @@ namespace FACE.Pages
 
         private void BtnClientService_Click(object sender, RoutedEventArgs e)
         {
-
+            var f1 = new TableClientService();
+            f1.ShowDialog();
         }
 
         private void BtnGender_Click(object sender, RoutedEventArgs e)

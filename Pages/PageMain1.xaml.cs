@@ -30,7 +30,10 @@ namespace FACE.Pages
             string Email = "1";
             string Password = "1";
             if (TxtLogin.Text == Email && TxtPassword.Text == Password)
+            {
                 MessageBox.Show("Добро пожаловать, Администратор");
+                Manager.MainFraim.Navigate(new PageMainTableBtn());
+            }
             else
                 MessageBox.Show("Не получилось аутентифицировать пользователя. Введены некорректные e-mail или пароль");
         }
