@@ -9,6 +9,6 @@ namespace FACE
 {
     class Manager
     {
-        public static Frame MainFraim;
+        public static Frame MainFraim { get; set; } 
     }
 }

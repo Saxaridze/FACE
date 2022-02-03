@@ -46,5 +46,25 @@ namespace FACE.Pages
         {
 
         }
+
+        private void BtnExate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShowPasswordBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ShowPasswordBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exite_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
