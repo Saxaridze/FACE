@@ -15,11 +15,18 @@ namespace FACE
     
     public partial class Zadanie3Entities : DbContext
     {
+        private static Zadanie3Entities _context;
         public Zadanie3Entities()
             : base("name=Zadanie3Entities")
         {
         }
-    
+        static public Zadanie3Entities GetContext()
+        {
+            if (_context == null)
+                _context = new Zadanie3Entities();
+            return _context;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
