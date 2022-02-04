@@ -7,6 +7,11 @@ using System.Windows.Controls;
 
 namespace FACE
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     class Manager
     {
         public static Frame MainFraim { get; set; } 

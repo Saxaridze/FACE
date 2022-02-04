@@ -16,13 +16,15 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <StackPanel x:Name="StackLetters" Orientation="Horizontal" Background="{StaticResource ColorMain}">
-            <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Margin="10" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" >Все</TextBlock>
+            <TextBlock FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" Margin="10" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" >Все</TextBlock>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Background="{StaticResource ColorMain}" Grid.Row="1">
             <TextBlock>Email</TextBlock>
-            <TextBox x:Name="TxtEmail"></TextBox>
+            <TextBox x:Name="TxtEmail" TextChanged="TxtEmail_TextChanged"></TextBox>
             <TextBlock>Телефон</TextBlock>
-            <TextBox x:Name="TxtPhone"></TextBox>
+            <TextBox x:Name="TxtPhone" TextChanged="TxtPhone_TextChanged"></TextBox>
+            <TextBlock>Дата последнего посещения</TextBlock>
+            <DatePicker x:Name="DatePicRegistrationDate"></DatePicker>
         </StackPanel>
         <DataGrid Grid.Row="2" x:Name="DataClient" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*" >
             <DataGrid.Columns>
@@ -35,14 +37,13 @@
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Phone" Binding="{Binding Phone}"></DataGridTextColumn>
                 <DataGridTextColumn Header="GenderCode" Binding="{Binding Gender.Name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="PhotoPath" Binding="{Binding PhotoPath}"></DataGridTextColumn>
-                <!--<DataGridTemplateColumn Header="PhotoPath">
+                <DataGridTemplateColumn Header="PhotoPath">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Height="30" Width="50" Source="{Binding PictureFilePath}"></Image>
+                            <Image Height="60" Width="100" Source="{Binding PicturePath}"></Image>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>-->
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Редактирование">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
