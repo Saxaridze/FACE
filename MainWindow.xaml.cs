@@ -29,12 +29,22 @@ namespace FACE
             MainFrame.Navigate(new PageMain1());
         }
 
+        /// <summary>
+        /// Клик по кнопки возращает на предыдущую форму
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             if (MainFrame.CanGoBack)
                 MainFrame.GoBack();
         }
 
+        /// <summary>
+        /// Кнопка назад не отображатеся на Главной форме
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
             if (!MainFrame.CanGoBack)

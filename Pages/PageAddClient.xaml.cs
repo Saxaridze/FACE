@@ -23,9 +23,16 @@ namespace FACE.Pages
     {
         private Client currentClient = new Client();
         bool isEdited = false;
-        public PageAddClient( Client client)
+        private Client Client { get; set; }
+
+        /// <summary>
+        /// Конструктор страницы
+        /// </summary>
+        /// <param name="client"></param>
+        public PageAddClient(Client client)
         {
             InitializeComponent();
+            Client = client;
             if (client != null)
             {
                 currentClient = client;
@@ -35,9 +42,15 @@ namespace FACE.Pages
             CmbGender.ItemsSource = Zadanie3Entities.GetContext().Genders.ToList();
         }
 
+        /// <summary>
+        /// Сохраняет продукцию по клику на кнопку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
             StringBuilder errors = new StringBuilder();
+            //сообщения об вводимых значениях
             if (string.IsNullOrWhiteSpace(currentClient.FirstName))
                 errors.AppendLine("Укажите Фамилию");
             if (string.IsNullOrWhiteSpace(currentClient.LastName))
@@ -55,23 +68,30 @@ namespace FACE.Pages
             }
             if (!isEdited)
             {
+                //добавление данных в БД таблицу Client
                 currentClient.ID = Zadanie3Entities.GetContext().Clients.ToArray()[Zadanie3Entities.GetContext().Clients.ToArray().Length - 1].ID + 1;
                 Zadanie3Entities.GetContext().Clients.Add(currentClient);
             }
             try
             {
+                //сообщение об добавленных данных
                 Zadanie3Entities.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена!");
                 Manager.MainFraim.GoBack();
             }
             catch (DbUpdateException dbu)
             {
+                //сообщение об ошибке
                 MessageBox.Show("Ошибка метода SaveChanges\n" + dbu.Message.ToString());
                 var exception = HandleDbUpdateException(dbu);
                 throw exception;
             }
             
         }
+        /// <summary>
+        /// Cообщение об ошибках при загрузке данных
+        /// </summary>
+        /// <param name="dbu"></param>
         private Exception HandleDbUpdateException(DbUpdateException dbu)
         {
             var builder = new StringBuilder("A DbUpdateException was caught while saving changes. ");
@@ -92,9 +112,21 @@ namespace FACE.Pages
             return new Exception(message, dbu);
         }
 
+        /// <summary>
+        /// По клику на кнопку показывает окно выбора изображения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnImage_Click(object sender, RoutedEventArgs e)
         {
-
+            var window = new ImagesWindow();
+            window.ShowDialog();
+            if (window.DialogResult == true)
+            {
+                Client.PhotoPath = window.ImgUri;
+                DataContext = null;
+                DataContext = Client;
+            }
         }
 
         private void tbImage_TextChanged(object sender, TextChangedEventArgs e)

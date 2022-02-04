@@ -20,55 +20,61 @@ namespace FACE
     /// </summary>
     public partial class ImagesWindow : Window
     {
+        private const int imagesPerRow = 4;
         public string ImgUri { get; private set; }
 
         public ImagesWindow()
         {
             InitializeComponent();
+            ShowImages();
         }
+
+        /// <summary>
+        /// Получает изображения из папки Resources
+        /// </summary>
+        /// <returns></returns>
         private string[] GetImages()
         {
-            string[] files = Directory.GetFiles("../../Resources");
+            var files = Directory.GetFiles("../../Resources");
             for (int i = 0; i < files.Length; i++)
             {
                 files[i] = files[i].Remove(0, 5);
             }
             return files;
         }
+
+        /// <summary>
+        /// Выводит изображения из папки Resources
+        /// </summary>
         private void ShowImages()
         {
-            const int imagesInRow = 5;
-
             var files = GetImages();
-
             var column = new StackPanel
             {
                 Orientation = Orientation.Vertical,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center
             };
-
-            for (int i = 0; i <= files.Length / imagesInRow; i++)
+            for (int i = 0; i <= files.Length / imagesPerRow; i++)
             {
                 var row = new StackPanel
                 {
                     Orientation = Orientation.Horizontal,
-                    Margin = new Thickness(0, 5, 0, 5)
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
                 };
-                for (int j = imagesInRow * i; j < (imagesInRow * i) + imagesInRow; j++)
+                for (int j = i * imagesPerRow; j < (i * imagesPerRow) + imagesPerRow; j++)
                 {
-                    if (j == files.Length)
+                    if (j >= files.Length)
                     {
                         break;
                     }
                     var image = new Image
                     {
-                        Width = 60,
-                        Height = 60,
-                        Margin = new Thickness(5, 0, 5, 0),
                         Source = new BitmapImage(new Uri(files[j], UriKind.Relative)),
-                        Cursor = Cursors.Hand,
-                        Tag = files[j]
+                        Height = 70,
+                        Tag = files[j],
+                        Cursor = Cursors.Hand
                     };
                     image.MouseLeftButtonDown += Image_MouseLeftButtonDown;
                     row.Children.Add(image);
@@ -77,10 +83,15 @@ namespace FACE
             }
             gridImages.Children.Add(column);
         }
+
+        /// <summary>
+        /// По нажатию на картинку сохраняет ее адрес
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var image = (Image)sender;
-            ImgUri = image.Tag.ToString();
+            ImgUri = (sender as Image).Tag.ToString();
             DialogResult = true;
             Close();
         }

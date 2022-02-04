@@ -24,9 +24,8 @@
                     <CheckBox Content="Показать пароль?"
                               HorizontalAlignment="Right"
                               Margin="5"
-                              Name="ShowPasswordBox"    
-                              Checked="ShowPasswordBox_Checked"
-                              Unchecked="ShowPasswordBox_Unchecked">
+                              Name="ShowPasswordBox"
+                              >
                     </CheckBox>
                 </UniformGrid>
                 <StackPanel Orientation="Horizontal">
